@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#f8dce5">
+<title>A Little Apology 🌷</title>
+<style>
+:root{--rose:#b83e63;--deep:#76243f;--cream:#fff9f8}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;min-height:100vh;font-family:Georgia,'Times New Roman',serif;color:var(--deep);background:#f8dce5}
+.photo-bg{position:fixed;inset:0;z-index:-2;overflow:hidden;background:#f8dce5}
+.photo-bg img{width:100%;height:100%;object-fit:cover;object-position:center 25%;filter:blur(2px);transform:scale(1.035)}
+.photo-bg:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(255,244,247,.56),rgba(255,224,233,.70) 55%,rgba(255,245,239,.82))}
+main{width:min(92%,680px);margin:0 auto;padding:38px 0 50px;min-height:100vh;display:flex;align-items:center;justify-content:center}
+.panel{width:100%;text-align:center;background:rgba(255,250,250,.82);border:1px solid rgba(255,255,255,.9);border-radius:28px;padding:clamp(24px,5vw,48px);box-shadow:0 18px 60px rgba(125,38,67,.12);backdrop-filter:blur(10px)}
+.flowers{font-size:clamp(34px,8vw,52px);letter-spacing:8px;margin-bottom:8px}
+.kicker{font:700 11px/1.5 Arial,sans-serif;letter-spacing:3px;text-transform:uppercase;color:#bd6680}
+h1{font-size:clamp(42px,10vw,66px);font-weight:400;font-style:italic;margin:10px 0;color:#8d2e4d}
+.sub{font-size:clamp(17px,4vw,21px);line-height:1.65;margin:12px auto 24px;max-width:490px}
+.note{display:none;text-align:left;line-height:1.9;font-size:17px;background:rgba(255,255,255,.72);border-radius:18px;padding:20px;margin:22px 0;white-space:normal}
+.note.show{display:block;animation:rise .55s ease}
+button{border:0;border-radius:999px;padding:14px 24px;background:linear-gradient(135deg,#e96d91,#c83e69);color:white;font-size:15px;font-weight:700;cursor:pointer;box-shadow:0 8px 22px rgba(200,62,105,.22)}
+button:active{transform:scale(.98)}
+.small{font:12px/1.7 Arial,sans-serif;color:#9a6878;margin-top:20px}
+.foot{font-size:23px;margin-top:18px}
+.petals{position:fixed;inset:0;pointer-events:none;z-index:-1;overflow:hidden}
+.petal{position:absolute;bottom:-35px;opacity:.55;animation:floatUp linear infinite}
+@keyframes floatUp{to{transform:translateY(-110vh) rotate(320deg);opacity:0}}
+@keyframes rise{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+@media(max-width:520px){main{width:92%;padding:18px 0 26px}.panel{padding:26px 19px;border-radius:23px}.photo-bg img{object-position:center 22%;filter:blur(1.6px)}.note{font-size:16px;padding:17px}}
+</style>
+</head>
+<body>
+<div class="photo-bg" aria-hidden="true"><img src="./her-photo.jpeg" alt=""></div>
+<div class="petals" id="petals"></div>
+<main>
+<section class="panel">
+  <div class="flowers" aria-hidden="true">🌷 💗 🌷</div>
+  <div class="kicker">A message from my heart</div>
+  <h1>I'm sorry.</h1>
+  <p class="sub">I know a simple website can't fix everything, but I wanted to make a little space to say something I should have said properly.</p>
+  <button id="readBtn" type="button">Read my message 💌</button>
+  <div class="note" id="note">
+    I’m genuinely sorry if I hurt you or made you feel bad. That was never what I wanted, but I understand that my intentions don't erase how you felt.<br><br>
+    I should have listened better and thought more carefully about my words and actions. I’m not asking you to forget it or to reply before you're ready. I just wanted to take responsibility and let you know that you matter to me.<br><br>
+    I’ll try to do better, not just say it. Take all the time you need. 💗
+  </div>
+  <div class="foot">🌸</div>
+  <p class="small">No pressure to forgive me right away. I just wanted you to know I'm sorry.</p>
+</section>
+</main>
+<script>
+document.getElementById('readBtn').addEventListener('click',function(){
+ const note=document.getElementById('note');
+ note.classList.toggle('show');
+ this.textContent=note.classList.contains('show')?'Close message 💗':'Read my message 💌';
+});
+const petals=document.getElementById('petals');
+for(let i=0;i<16;i++){
+ const p=document.createElement('span');p.className='petal';p.textContent=['🌸','🌷','💗'][i%3];
+ p.style.left=(Math.random()*100)+'%';p.style.animationDuration=(10+Math.random()*12)+'s';
+ p.style.animationDelay=(-Math.random()*18)+'s';p.style.fontSize=(12+Math.random()*13)+'px';petals.appendChild(p);
+}
+</script>
+</body>
+</html>
